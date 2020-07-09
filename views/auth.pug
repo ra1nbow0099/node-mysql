@@ -1,0 +1,65 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css')
+  link(rel='stylesheet' href='/index.css')
+
+
+.auth
+  .row
+    .col.s12
+      ul.tabs
+        li.tab.col.s6
+          a.active(href='#login') Sign in
+        li.tab.col.s6
+          a(href='#register') Registration
+    #login.col.s6.offset-s3
+
+      h1 Login
+      form(action='/auth/login' method='POST')
+        .input-field
+          input#email.validate(name='email' type='email' required='')
+          label(for='email') Email
+          span.helper-text(data-error='input email!')
+        .input-field
+          input#password.validate(name='password' type='password' required='')
+          label(for='password') Password
+          span.helper-text(data-error='input password!')
+        p
+          a(href='/auth/reset') Forgot password?
+        button.btn.btn-primary(type='submit') Sign in
+
+    #register.col.s6.offset-s3
+
+      h1 Registration
+      form(action='/auth/register' method='POST')
+        .input-field
+          input#name.validate(name='name' type='text' required='')
+          label(for='name') Your name
+          span.helper-text(data-error='input name!')
+        .input-field
+          input#lastname.validate(name='lastname' type='text' required='')
+          label(for='lastname') Your lastname
+          span.helper-text(data-error='input lastname!')
+        .input-field
+          input#remail.validate(name='email' type='email' required='')
+          label(for='remail') Email
+          span.helper-text(data-error='input email!')
+        .input-field
+          input#rpassword.validate(name='password' type='password' required='')
+          label(for='rpassword') Password
+          span.helper-text(data-error='input password!')
+        .input-field
+          input#confirm.validate(name='confirm' type='password' required='')
+          label(for='confirm') Password one more time
+          span.helper-text(data-error='input password!')
+        button.btn.btn-primary(type='submit') Create account
+
+
+
+
+script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js')
+script(src='/app.js')
+script.
+  M.Tabs.init(document.querySelectorAll('.tabs'));
